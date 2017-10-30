@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="LibreOffice 4.1.0.4 (Windows)">
+	<META NAME="CREATED" CONTENT="20130818;204311430000000">
+	<META NAME="CHANGED" CONTENT="20130901;3600103000000">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		H1 { margin-bottom: 0.08in }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "Microsoft YaHei"; font-size: 16pt }
+		H1.ctl { font-family: "Mangal"; font-size: 16pt }
+		H2 { margin-bottom: 0.08in }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-family: "Microsoft YaHei"; font-size: 14pt; font-style: italic }
+		H2.ctl { font-family: "Mangal"; font-size: 14pt; font-style: italic }
+		H3 { margin-bottom: 0.08in }
+		H3.western { font-family: "Arial", sans-serif }
+		H3.cjk { font-family: "Microsoft YaHei" }
+		H3.ctl { font-family: "Mangal" }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western" ALIGN=CENTER>tkoo</H1>
+<H2 CLASS="western">Global Procedures</H2>
+<H3 CLASS="western">tkoo::class</H3>
+<P><B>tkoo::class</B> <I>class body</I></P>
+<P>The tkoo::class procedure creates a new class named <I>class</I><SPAN STYLE="font-style: normal">,</SPAN>
+<I>class</I> must not exist. Upon creation of class <I>body</I> will
+be evaluated in the tkoo::define namespace. The following procedures
+are defined in the tkoo::define namespace, and are identical to
+oo::define unless otherwise noted and do not work outside of the
+class definition.</P>
+<P STYLE="margin-left: 0.49in"><B>bind</B> <I>sequence body</I></P>
+<P STYLE="margin-left: 0.98in">This procedure is a shortcut to the tk
+bind command. Key bindings created by this command will effect all
+widgets created by the class. Bindings are inherited from parent
+classes.</P>
+<P STYLE="margin-left: 0.49in"><B>constructor</B> <I>argList
+bodyScript</I></P>
+<P STYLE="margin-left: 0.97in; font-style: normal">Procedures from
+the tkoo::Helpers are imported in the class constructor.</P>
+<P STYLE="margin-left: 0.49in"><B>deletemethod</B> <I>name ?name &hellip;?</I></P>
+<P STYLE="margin-left: 0.49in"><B>destructor</B> <I>bodyScript</I></P>
+<P STYLE="margin-left: 0.49in"><B>export</B> <I>name ?name ..?</I></P>
+<P STYLE="margin-left: 0.49in"><B>filter</B> <I>?-slotOperation?
+?methodName?</I></P>
+<P STYLE="margin-left: 0.49in"><B>forward</B> <I>name cmdName ?arg &hellip;?</I></P>
+<P STYLE="margin-left: 0.49in"><B>method</B> <I>name argList
+bodyScript</I></P>
+<P STYLE="margin-left: 0.49in"><B>mixin</B> <I>?-slotOperation?
+?className &hellip;?</I></P>
+<P STYLE="margin-left: 0.49in"><B>renamemethod</B> <I>fromName toName</I></P>
+<P STYLE="margin-left: 0.49in"><B>self</B> <I>subcommand arg &hellip;</I></P>
+<P STYLE="margin-left: 0.49in"><B>self</B> <I>script</I></P>
+<P STYLE="margin-left: 0.49in"><B>superclass</B> <I>?-slotOperation?
+?className?</I></P>
+<P STYLE="margin-left: 0.97in; font-style: normal">All widget classes
+must superclass tkoo::widget.</P>
+<P STYLE="margin-left: 0.49in"><B>unexport</B> <I>name ?name &hellip;?</I></P>
+<P STYLE="margin-left: 0.49in"><B>variable</B> <I>?-slotOperation?
+?name?</I></P>
+<P STYLE="margin-left: 0.98in">The following variables are added to
+the variable list:</P>
+<P STYLE="margin-left: 1.96in; text-indent: -1.02in">widCmd	contains
+the original command used to access the widget</P>
+<P STYLE="margin-left: 1.96in; text-indent: -1.02in">pathname	contains
+the pathname of the widget</P>
+<P STYLE="margin-left: 1.96in; text-indent: -1.02in">options	contains
+information about widget options</P>
+<P STYLE="margin-left: 1.96in; text-indent: -1.02in">exists	used to
+determine if the widget already exists</P>
+<P><BR><BR>
+</P>
+<H3 CLASS="western">tkoo::wrap</H3>
+<P><B>tkoo::wrap</B> <I>original ?new?</I></P>
+<P STYLE="font-style: normal">This procedure creates classes for Tk
+widgets, <I>original</I> is the Tk widget to be wrapped. If <I>new</I>
+is specifed it states the name of the class.</P>
+<P STYLE="font-style: normal"><BR><BR>
+</P>
+<H2 CLASS="western">Helper Procedures</H2>
+<P>These procedures are designed to be used in widget class methods.
+They are defined in the tkoo::Helpers namespace.</P>
+<P><B>ClassList</B></P>
+<P STYLE="font-weight: normal">Returns a list of all classes that the
+widget inherits.</P>
+<P><B>Exists </B><SPAN STYLE="font-weight: normal">widget</SPAN></P>
+<P STYLE="font-weight: normal">Determines if the widget was already
+created, used in the constructor.</P>
+<P><B>mc</B><SPAN STYLE="font-weight: normal"> src-string ?arg &hellip;?</SPAN></P>
+<P STYLE="font-weight: normal">Returns a translation of src-string
+from msgcat. mc will search classes the object inherits, then search
+the namespaces of those classes, and the parents of those namespaces,
+and so on. If no translation string exists, ::msgcat::mcunknown is
+called and the string returned fom ::msgcat::mcunknown is returned.</P>
+<P STYLE="font-weight: normal"><B>mcmax</B> ?src-string &hellip;?</P>
+<P STYLE="font-weight: normal">Returns the length of the longest
+translated string.</P>
+<P><B>Option </B><I><SPAN STYLE="font-weight: normal">method ?arg &hellip;?</SPAN></I></P>
+<P STYLE="font-style: normal; font-weight: normal">The Option command
+is used to modify and query options for the widget. Option supports
+the following methods.</P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>add</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="font-weight: normal">option dbName dbClass
+default body</SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><SPAN STYLE="font-weight: normal">The
+add method adds an option to the widget named </SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">.
+</SPAN><I><SPAN STYLE="font-weight: normal">dbName</SPAN></I><SPAN STYLE="font-weight: normal">
+and </SPAN><I><SPAN STYLE="font-weight: normal">dbClass</SPAN></I><SPAN STYLE="font-weight: normal">
+will be used for the option database if support is implemented, until
+then they provide information supplied by </SPAN><I><SPAN STYLE="font-weight: normal">.widget
+configure</SPAN></I><SPAN STYLE="font-weight: normal">. </SPAN><I><SPAN STYLE="font-weight: normal">default</SPAN></I><SPAN STYLE="font-weight: normal">
+specifies the value for </SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">
+if it is not set. b</SPAN><I><SPAN STYLE="font-weight: normal">ody</SPAN></I><SPAN STYLE="font-weight: normal">
+is evaluated anytime the value of an option is modified. </SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">
+must start with a &ldquo;-&rdquo;.</SPAN></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>eval</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal; font-weight: normal">
+The eval method is used by the configure method of the widget when an
+option is changed.</P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>get</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="font-weight: normal">?</SPAN></I><I><SPAN STYLE="font-weight: normal">option?</SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><SPAN STYLE="font-weight: normal">If
+</SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">
+is specified, this method will return info about the option in the
+form of a list consisting of </SPAN><I><SPAN STYLE="font-weight: normal">option
+dbName dbClass default value</SPAN></I><SPAN STYLE="font-weight: normal">.
+</SPAN><SPAN STYLE="font-weight: normal">If </SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">
+is not specified, this method will return a list of all options. This
+method works the same as a widget configure method.</SPAN></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>remove</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><SPAN STYLE="font-weight: normal">The
+remove method removes </SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I><SPAN STYLE="font-weight: normal">
+from the widget.</SPAN></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>set</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">option
+value</SPAN></SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">The
+set method assigns </SPAN></SPAN><I><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">value</SPAN></SPAN></I><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">
+to </SPAN></SPAN><I><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">option</SPAN></SPAN></I><SPAN STYLE="text-decoration: none"><SPAN STYLE="font-weight: normal">,
+then evaluates the options body. Upon error, the original value is
+restored and an error is thrown.</SPAN></SPAN></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><B>lookup</B><SPAN STYLE="font-weight: normal">
+</SPAN><I><SPAN STYLE="font-weight: normal">option</SPAN></I></P>
+<P STYLE="margin-left: 0.49in; font-style: normal"><SPAN STYLE="font-weight: normal">U</SPAN><SPAN STYLE="font-weight: normal">sed
+to find an option from the shortened form.</SPAN></P>
+<P STYLE="margin-left: 0.49in; font-style: normal; font-weight: normal">
+<BR><BR>
+</P>
+<H2 CLASS="western" STYLE="font-weight: normal">tkoo::widget class</H2>
+<P><SPAN STYLE="font-weight: normal">The tkoo::widget class is the
+class that all other widget classes are made of, therefore they
+inherit all of its methods. By default the tkoo::widget class creates
+a blank frame, this can be overridden in the Create method of the
+tkoo::widget class. </SPAN><SPAN STYLE="font-weight: normal">The
+tkoo::widget class is made of the following methods:</SPAN></P>
+<P><B>constructor</B><I><SPAN STYLE="font-weight: normal"> </SPAN></I><I><SPAN STYLE="font-weight: normal">wid
+?option value &hellip;?</SPAN></I></P>
+<P STYLE="font-style: normal; font-weight: normal">The constructor
+calls a series of methods to create and initialize the widget. In the
+event the constructor is overridden the Exists procedure needs to be
+called first to make sure that a widget with the same name hasn&rsquo;t
+already been created. The constructor first creates the variables,
+then calls the following methods in order CreateOptions, Create,
+CreateBindings. Finally it renames the widget command and the class.</P>
+<P><B>destructor</B></P>
+<P STYLE="font-weight: normal">The destructor removes the widget and
+its command.</P>
+<P><B>BindDestroy</B></P>
+<P STYLE="font-weight: normal">The BindDestroy method is called when
+the widget is destroyed, it destroys the class.</P>
+<P><B>cget </B><I><SPAN STYLE="font-weight: normal">option</SPAN></I></P>
+<P STYLE="font-weight: normal">This method is the same as the widget
+cget method.</P>
+<P><B>configure </B><I><SPAN STYLE="font-weight: normal">?</SPAN></I><I><SPAN STYLE="font-weight: normal">option
+value? ...</SPAN></I></P>
+<P STYLE="font-weight: normal">This method is the same as the widget
+configure method.</P>
+<P><B>Create</B><I><SPAN STYLE="font-weight: normal"> </SPAN></I><I><SPAN STYLE="font-weight: normal">wid
+?option value &hellip;?</SPAN></I></P>
+<P STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">This
+method is called to create the widget. w</SPAN><I><SPAN STYLE="font-weight: normal">id</SPAN></I><SPAN STYLE="font-weight: normal">
+is the widget name.</SPAN></P>
+<P><B>CreateOptions</B></P>
+<P STYLE="font-weight: normal">This method is called to create
+options for the widget.</P>
+<P><B>CreateBindings</B></P>
+<P STYLE="font-weight: normal">This method handles the bindtags for
+the widget.</P>
+<P><B>destroy</B></P>
+<P STYLE="font-weight: normal">The destroy method has been unexported
+to prevent unintentional destruction of widgets. It cannot be used
+for anything other than destroying the widget.</P>
+<H2 CLASS="western">Additional Classes</H2>
+<H3 CLASS="western">Tk widgets</H3>
+<P>The standard Tk widget set is &ldquo;wrapped&rdquo; in to tkoo
+classes when the package is loaded to make it easier to make modified
+versions of the Tk widgets. These classes should look and act exactly
+like the original Tk widgets, with the same methods and options. The
+following classes are created:</P>
+<P>tkoo::tk_button</P>
+<P>tkoo::tk_canvas</P>
+<P>tkoo::tk_checkbutton</P>
+<P>tkoo::tk_entry</P>
+<P>tkoo::tk_frame</P>
+<P>tkoo::tk_label</P>
+<P>tkoo::tk_labelframe</P>
+<P>tkoo::tk_listbox</P>
+<P>tkoo::tk_menubutton</P>
+<P>tkoo::tk_message</P>
+<P>tkoo::tk_panedwindow</P>
+<P>tkoo::tk_radiobutton</P>
+<P>tkoo::tk_scale</P>
+<P>tkoo::tk_scrollbar</P>
+<P>tkoo::tk_spinbox</P>
+<P>tkoo::tk_text</P>
+<P>tkoo::tk_toplevel</P>
+<P>tkoo::ttk_button</P>
+<P>tkoo::ttk_checkbutton</P>
+<P>tkoo::ttk_combobox</P>
+<P>tkoo::ttk_entry</P>
+<P>tkoo::ttk_frame</P>
+<P>tkoo::ttk_label</P>
+<P>tkoo::ttk_labelframe</P>
+<P>tkoo::ttk_menubutton</P>
+<P>tkoo::ttk_notebook</P>
+<P>tkoo::ttk_panedwindow</P>
+<P>tkoo::ttk_progressbar</P>
+<P>tkoo::ttk_radiobutton</P>
+<P>tkoo::ttk_scale</P>
+<P>tkoo::ttk_scrollbar</P>
+<P>tkoo::ttk_separator</P>
+<P>tkoo::ttk_sizegrip</P>
+<P>tkoo::ttk_spinbox</P>
+<P>tkoo::ttk_treeview</P>
+<H3 CLASS="western">tkoo::widgets</H3>
+<P>The following classes are part of the tkoo::widgets package, each
+one has its own package name as well. These classes can be used like
+any tk command used to create a widget and inherit all the methods of
+their Tk counterpart. They all use the tkoo::mixin::help class, for
+some this is the only distinction between the class and the Tk
+equivalent widget..</P>
+<P><B>tkoo::browser</B></P>
+<P STYLE="font-weight: normal">File browser widget.</P>
+<P STYLE="font-weight: normal">Inherits tkoo::ttk_treeview</P>
+<P><B>tkoo::button</B></P>
+<P><B>tkoo::canvas</B></P>
+<P><B>tkoo::checkbutton</B></P>
+<P><B>tkoo::combobox</B></P>
+<P><B>tkoo::dtree</B></P>
+<P><B>tkoo::entry</B></P>
+<P><B>tkoo::frame</B></P>
+<P><B>tkoo::labelframe</B></P>
+<P><B>tkoo::label</B></P>
+<P><B>tkoo::listbox</B></P>
+<P><B>tkoo::menubutton</B></P>
+<P><B>tkoo::message</B></P>
+<P><B>tkoo::notebook</B></P>
+<P><B>tkoo::panedwindow</B></P>
+<P><B>tkoo::progressbar</B></P>
+<P><B>tkoo::radiobutton</B></P>
+<P><B>tkoo::scale</B></P>
+<P><B>tkoo::scrollbar</B></P>
+<P><B>tkoo::scrolledframe</B></P>
+<P><B>tkoo::separator</B></P>
+<P><B>tkoo::sizegrip</B></P>
+<P><B>tkoo::spinbox</B></P>
+<P><B>tkoo::text</B></P>
+<P><B>tkoo::treeview</B></P>
+<H3 CLASS="western">tkoo::widgets mixins</H3>
+<P>tkoo::mixin::help</P>
+</BODY>
+</HTML>
